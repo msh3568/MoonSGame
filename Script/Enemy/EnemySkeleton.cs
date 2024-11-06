@@ -4,5 +4,30 @@ using UnityEngine;
 
 public class EnemySkeleton : Enemy
 {
-    
+    #region State
+
+    public SkeletonIdleState idleState { get; private set; }
+    public SkeletonMoveState moveState { get; private set; }
+
+    #endregion
+
+
+    protected override void Awake()
+    {
+        base.Awake();
+
+        idleState = new SkeletonIdleState(this, stateMachine, "Idle", this);
+        moveState = new SkeletonMoveState(this, stateMachine, "Move", this);
+    }
+
+    protected override void Start()
+    {
+        base.Start();
+        stateMachine.Intialize(idleState);
+    }
+
+    protected override void Update()
+    {
+        base.Update();
+    }
 }
