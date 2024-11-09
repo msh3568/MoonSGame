@@ -17,7 +17,7 @@ public class EnemyState
     {
         this.enemyBase = _enemyBase;
         this.stateMachine = _stateMachine;
-        this.animBoolName = _animBoolName;  
+        this.animBoolName = _animBoolName;
     }
 
     public virtual void Update()
@@ -32,10 +32,14 @@ public class EnemyState
         enemyBase.anim.SetBool(animBoolName, true);
     }
 
-    public virtual void Exit() 
+    public virtual void Exit()
     {
         enemyBase.anim.SetBool(animBoolName, false);
     }
+
+    public virtual void AnimaitionFinishTrigger()
+    {
+        triggerCalled = true;
+    }
 }
- 
 

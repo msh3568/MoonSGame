@@ -1,21 +1,21 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : Entity
 {
-    [Header("¾Æµû²ô!")]
+    [Header("ì•„ë”°ë„!")]
     public Vector2[] attackMovement;
 
     public bool isBusy { get; private set; }
-    [Header("À§À×Ä¡Å²À¸À½Ä¡Å²")]
+    [Header("ìœ„ì‰ì¹˜í‚¨ìœ¼ìŒì¹˜í‚¨")]
     public float moveSpeed;
     public float jumpForce;
-    [SerializeField] private int maxJumpCount = 2; // ÀÎ½ºÆåÅÍ¿¡¼­ ¼³Á¤ÇÒ ¼ö ÀÖ´Â ÃÖ´ë Á¡ÇÁ È½¼ö
-    public int currentJumpCount; // ÇöÀç Á¡ÇÁ È½¼ö °ü¸®
+    [SerializeField] private int maxJumpCount = 2; // ì¸ìŠ¤í™í„°ì—ì„œ ì„¤ì •í•  ìˆ˜ ìˆëŠ” ìµœëŒ€ ì í”„ íšŸìˆ˜
+    public int currentJumpCount; // í˜„ì¬ ì í”„ íšŸìˆ˜ ê´€ë¦¬
 
 
-    [Header("ˆ¿½Ã ¾Æ¿ö³Êˆ¿½Ã")]
+    [Header("ëŒ€ì‹œ ì•„ì›Œë„ˆ ëŒ€ì‹œ-")]
     [SerializeField] private float dashCooldown;
     private float dashUsageTimer;
     public float dashSpeed;
@@ -112,7 +112,7 @@ public class Player : Entity
 
         if (IsGroundDetected())
         {
-            currentJumpCount = 0; // ¶¥¿¡ ´êÀ¸¸é Á¡ÇÁ È½¼ö ÃÊ±âÈ­
+            currentJumpCount = 0; // ë•…ì— ë‹¿ìœ¼ë©´ ì í”„ íšŸìˆ˜ ì´ˆê¸°í™”
         }
     }
 

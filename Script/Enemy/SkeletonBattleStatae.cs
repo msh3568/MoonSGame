@@ -1,3 +1,4 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,7 +16,7 @@ public class SkeletonBattleStatae : EnemyState
     public override void Enter()
     {
         base.Enter();
-        player = GameObject.Find("player").transform;
+        player = GameObject.Find("Player").transform;
     }
 
     public override void Update()
@@ -24,17 +25,26 @@ public class SkeletonBattleStatae : EnemyState
 
         if (enemy.IsPlayerDetected())
         {
+            stateTimer = enemy.battleTime;
             if (enemy.IsPlayerDetected().distance < enemy.attackDistance)
             {
-                enemy.ZeroVelocity();
-                return;
+                if(CanAttack())
+                    stateMachine.ChangeState(enemy.attackState);
             }
         }
+        else
+        {
+            if (stateTimer < 0 || Vector2.Distance(player.transform.position, enemy.transform.position)>7 )
+            {
+                stateMachine.ChangeState(enemy.idleState);
+            }
+        }
+
         if (player.position.x > enemy.transform.position.x)
         {
             moveDir = 1;
         }
-        else if (player.position.x > enemy.transform.position.x)
+        else if (player.position.x < enemy.transform.position.x)
         {
             moveDir = -1;
         }
@@ -47,5 +57,15 @@ public class SkeletonBattleStatae : EnemyState
         base.Exit();
     }
 
+    private bool CanAttack()
+    {
+        if(Time.time >= enemy.lastTimeAttacked + enemy.attackCooldown)
+        {
+            enemy.lastTimeAttacked = Time.time;
+            return true;
+        }
+
+        return false;
+    }
 
 }

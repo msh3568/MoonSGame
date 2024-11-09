@@ -24,10 +24,11 @@ public class SkeletonIdleState : SkeletonGroundStatae
     {
         base.Update();
 
-        if (stateTimer < 0) { 
+        if (stateTimer < 0)
+        {
             stateMachine.ChangeState(enemy.moveState);
         }
 
-        
+
     }
 }
