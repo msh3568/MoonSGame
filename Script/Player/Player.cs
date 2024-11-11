@@ -6,6 +6,7 @@ public class Player : Entity
 {
     [Header("아따끄!")]
     public Vector2[] attackMovement;
+    
 
     public bool isBusy { get; private set; }
     [Header("위잉치킨으음치킨")]
@@ -15,7 +16,7 @@ public class Player : Entity
     public int currentJumpCount; // 현재 점프 횟수 관리
 
 
-    [Header("대시 아워너 대시-")]
+    [Header("대시 아워너 대시")]
     [SerializeField] private float dashCooldown;
     private float dashUsageTimer;
     public float dashSpeed;

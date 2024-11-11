@@ -10,22 +10,16 @@ public class EnemySkeletonAnimaitionTrigger : MonoBehaviour
     {
         enemy.AnimaitionFinishTrigger();
     }
-/*
+
     private void AttackTrigger()
     {
-        // 공격 범위 내의 모든 콜라이더 찾기
         Collider2D[] colliders = Physics2D.OverlapCircleAll(enemy.attackCheck.position, enemy.attackCheckRadius);
 
-        foreach (var hit in colliders)
+        foreach(var hit in colliders)
         {
             if (hit.GetComponent<Player>() != null)
-            {
-                // 공격이 성공하면 플레이어에게 데미지
-                hit.GetComponent<Player>().Damage();
-            }
+                hit.GetComponent<Player>().Damge();
+
         }
     }
-    private void OpenCounterWindow() => enemy.OpenCounterAttackWindow();
-    private void CloseCounterWindow() => enemy.CloseCounterAttackWindow();
-    */
 }
